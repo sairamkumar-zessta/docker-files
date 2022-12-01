@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    env_file:
+      - ./env/postgres.env
+    # environment:
+    #   POSTGRES_USER: postgres
+    #   POSTGRES_DB: postgres
+    #   POSTGRES_PASSWORD: 99891838Aa@
+  
+    volumes:
+      - vernon-school:/var/lib/postgresql/data
+      
+
+  vernon:
+    build: .
+      # context: . 
+    volumes:
+      - C:\docker\vernonSchool:/app
+
+    ports:
+      - "3000:8000"   
+    depends_on: 
+      - db
+
+volumes:
+  vernon-school:
+  
+  
